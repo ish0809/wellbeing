@@ -15,14 +15,20 @@ function nextPage(pageNumber) {
     document.getElementById(`page${pageNumber}`).style.display = "block";
 }
 
-// Dynamically generate form questions
+// Dynamically generate form questions with radio buttons
 const form = document.getElementById("testForm");
 questions.forEach((q, index) => {
     const div = document.createElement("div");
     div.classList.add("question");
     div.innerHTML = `
         <label>${q.text}</label>
-        <input type="number" id="q${index}" min="1" max="10" value="5">
+        <div>
+            <input type="radio" name="q${index}" value="1" required> 1
+            <input type="radio" name="q${index}" value="2"> 2
+            <input type="radio" name="q${index}" value="3"> 3
+            <input type="radio" name="q${index}" value="4"> 4
+            <input type="radio" name="q${index}" value="5"> 5
+        </div>
     `;
     form.appendChild(div);
 });
@@ -32,8 +38,11 @@ function calculateResult() {
     let scores = {};
 
     questions.forEach((q, index) => {
-        const score = parseInt(document.getElementById(`q${index}`).value) || 0;
-        scores[q.category] = (scores[q.category] || 0) + score;
+        const selectedValue = document.querySelector(`input[name="q${index}"]:checked`);
+        if (selectedValue) {
+            const score = parseInt(selectedValue.value) || 0;
+            scores[q.category] = (scores[q.category] || 0) + score;
+        }
     });
 
     // Find the category with the highest score

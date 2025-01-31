@@ -12,7 +12,12 @@
     <div class="page" id="page1">
         <h1>Find My Focus</h1>
         <p>Welcome to the Well-being Diagnostic Test! This test will help you identify which area of well-being to focus on.</p>
-        <p><strong>Rules:</strong> You will see a series of statements. Rate each statement from **1 (Strongly Disagree)** to **10 (Strongly Agree)**.</p>
+        <p><strong>Instructions:</strong></p>
+        <ol class="instructions">
+            <li>On a scale from **1–5**, rate each statement on how well you relate to it.</li>
+            <li>Get to know your **focus area** based on your results.</li>
+            <li>Pick a **fanzine** from your focus area category!</li>
+        </ol>
         <button onclick="nextPage(2)">Start Test</button>
     </div>
 
@@ -28,9 +33,13 @@
         <h1>Your Well-being Focus</h1>
         <p id="resultText" class="bold-text"></p>
         <p>Pick a fanzine from the <strong id="categoryText"></strong> category!</p>
+        <button onclick="nextPage(1)">Restart Test</button>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
+
+
+
 
